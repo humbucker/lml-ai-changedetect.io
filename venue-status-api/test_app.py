@@ -139,5 +139,34 @@ class TestVenueStatusAPI(unittest.TestCase):
         # Should fall back to raw string output if not valid JSON
         self.assertEqual(data[0]["ai_summary"], markdown_summary)
 
+    @patch("app.requests.get")
+    def test_venue_change_status_with_markdown_wrapped_json(self, mock_get):
+        mock_watches = {
+            "a6b71abd-ceca-4470-8c46-593f10e3de0f": {
+                "title": "Goldfields: Northern Arts Hotel | a6b71abd-ceca-4470-8c46-593f10e3de0f",
+                "url": "https://events.humanitix.com/host/the-coolroom-at-the-northern-arts-hotel",
+                "last_changed": 1783907499,
+                "last_checked": 1783907499
+            }
+        }
+        mock_get.return_value.json.return_value = mock_watches
+        mock_get.return_value.status_code = 200
+
+        # Create watch.json with JSON wrapped in markdown code blocks
+        wrapped_summary = "```json\n{\n  \"gigs\": [\n    {\n      \"venue\": null,\n      \"date\": \"Sun, 26 Jul\",\n      \"time\": \"6:30pm\",\n      \"acts\": [\"Ade Ishs\", \"Jack Pantazis\"]\n    }\n  ]\n}\n```"
+        self.create_mock_watch_json(
+            "a6b71abd-ceca-4470-8c46-593f10e3de0f",
+            {"_llm_change_summary": wrapped_summary}
+        )
+
+        response = self.app.get("/venue-change-status")
+        self.assertEqual(response.status_code, 200)
+        
+        data = json.loads(response.data)
+        self.assertEqual(len(data), 1)
+        
+        # Should clean the markdown wrapper, parse, and apply fallback venue
+        self.assertEqual(data[0]["ai_summary"]["gigs"][0]["venue"], "Northern Arts Hotel")
+
 if __name__ == "__main__":
     unittest.main()

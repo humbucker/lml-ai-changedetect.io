@@ -1,6 +1,7 @@
 import os
 import requests
 import json
+import re
 from datetime import datetime, timezone
 from flask import Flask, jsonify
 
@@ -44,9 +45,15 @@ def get_llm_change_summary(watch_id, default_venue_name):
         if not summary_text:
             return None
             
+        # Clean markdown code block wraps (e.g. ```json ... ```)
+        cleaned_text = summary_text.strip()
+        match = re.match(r"^```(?:json)?\s*(.*?)\s*```$", cleaned_text, re.DOTALL | re.IGNORECASE)
+        if match:
+            cleaned_text = match.group(1).strip()
+            
         # Try to parse as JSON first
         try:
-            parsed_summary = json.loads(summary_text)
+            parsed_summary = json.loads(cleaned_text)
             if isinstance(parsed_summary, dict) and "gigs" in parsed_summary:
                 # Apply fallback venue name for single-venue watches
                 for gig in parsed_summary["gigs"]:
