@@ -1,0 +1,148 @@
+{
+  "body": "",
+  "browser_steps": [],
+  "browser_steps_last_error_step": null,
+  "conditions": [
+    {
+      "field": "None",
+      "operator": "None",
+      "value": ""
+    }
+  ],
+  "conditions_match_logic": "ALL",
+  "check_count": 10,
+  "check_unique_lines": false,
+  "consecutive_filter_failures": 0,
+  "content-type": "text/html;charset=utf-8",
+  "date_created": 1782543439,
+  "extract_lines_containing": [],
+  "extract_text": [],
+  "llm_intent": "",
+  "llm_change_summary": "",
+  "llm_prefilter": null,
+  "llm_evaluation_cache": {},
+  "fetch_backend": "html_webdriver",
+  "fetch_time": 301.256,
+  "filter_failure_notification_send": true,
+  "filter_text_added": true,
+  "filter_text_removed": false,
+  "filter_text_replaced": true,
+  "follow_price_changes": true,
+  "has_ldjson_price_data": false,
+  "history_snapshot_max_length": null,
+  "headers": {},
+  "ignore_text": [],
+  "ignore_status_codes": false,
+  "in_stock_only": true,
+  "include_filters": [],
+  "last_checked": 1783465661,
+  "last_error": "Exception: Page.goto: Target page, context or browser has been closed\nCall log:\n  - navigating to \"https://www.clubitalia.com.au/club-events-geelong#UPCOMINGEVENTS\", waiting until \"load\"\n",
+  "last_notification_error": false,
+  "last_viewed": 1782708779,
+  "method": "GET",
+  "notification_alert_count": 0,
+  "notification_body": "",
+  "notification_format": "System default",
+  "notification_muted": false,
+  "notification_screenshot": false,
+  "notification_title": "",
+  "notification_urls": [],
+  "page_title": null,
+  "paused": false,
+  "previous_md5": "dc36b88a6b8991fa1ad15e60295bf256",
+  "processor": "text_json_diff",
+  "price_change_threshold_percent": null,
+  "proxy": null,
+  "remote_server_reply": "nginx",
+  "sort_text_alphabetically": false,
+  "strip_ignored_lines": null,
+  "subtractive_selectors": [],
+  "tag": "",
+  "tags": [],
+  "text_should_not_be_present": [],
+  "time_between_check": {
+    "weeks": 1,
+    "days": null,
+    "hours": null,
+    "minutes": null,
+    "seconds": null
+  },
+  "time_between_check_use_default": true,
+  "time_schedule_limit": {
+    "enabled": true,
+    "monday": {
+      "enabled": true,
+      "start_time": "16:00",
+      "duration": {
+        "hours": "4",
+        "minutes": "0"
+      }
+    },
+    "tuesday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "wednesday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "thursday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "friday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "saturday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "sunday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "timezone": ""
+  },
+  "title": "Geelong: Club Italia Geelong | 39d6cf15-27b2-46ed-bdde-b31f3b5ea66f",
+  "track_ldjson_price_data": null,
+  "trim_text_whitespace": false,
+  "remove_duplicate_lines": false,
+  "trigger_text": [],
+  "url": "https://www.clubitalia.com.au/club-events-geelong#UPCOMINGEVENTS",
+  "use_page_title_in_list": null,
+  "uuid": "5acf19ab-992c-4478-9b1a-49982c1f97e4",
+  "webdriver_delay": 4,
+  "webdriver_js_execute_code": "",
+  "scheduler_timezone_default": null,
+  "save_button": true,
+  "last_filter_config_hash": "358f3a9a15b65299a8601ad1b2ae6f38",
+  "last_check_status": 200,
+  "_llm_result": null,
+  "_llm_intent": "",
+  "_llm_change_summary": ""
+}

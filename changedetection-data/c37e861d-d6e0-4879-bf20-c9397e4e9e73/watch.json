@@ -1,0 +1,148 @@
+{
+  "body": "",
+  "browser_steps": [],
+  "browser_steps_last_error_step": null,
+  "conditions": [
+    {
+      "field": "None",
+      "operator": "None",
+      "value": ""
+    }
+  ],
+  "conditions_match_logic": "ALL",
+  "check_count": 9,
+  "check_unique_lines": false,
+  "consecutive_filter_failures": 0,
+  "content-type": "text/html; charset=utf-8",
+  "date_created": 1782543454,
+  "extract_lines_containing": [],
+  "extract_text": [],
+  "llm_intent": "",
+  "llm_change_summary": "",
+  "llm_prefilter": null,
+  "llm_evaluation_cache": {},
+  "fetch_backend": "html_webdriver",
+  "fetch_time": 301.886,
+  "filter_failure_notification_send": true,
+  "filter_text_added": true,
+  "filter_text_removed": false,
+  "filter_text_replaced": true,
+  "follow_price_changes": true,
+  "has_ldjson_price_data": false,
+  "history_snapshot_max_length": null,
+  "headers": {},
+  "ignore_text": [],
+  "ignore_status_codes": false,
+  "in_stock_only": true,
+  "include_filters": [],
+  "last_checked": 1783465509,
+  "last_error": "Exception: Page.goto: Target page, context or browser has been closed\nCall log:\n  - navigating to \"https://www.queenofthewestgeelong.com.au/whats-on/\", waiting until \"load\"\n",
+  "last_notification_error": false,
+  "last_viewed": 1782708779,
+  "method": "GET",
+  "notification_alert_count": 0,
+  "notification_body": "",
+  "notification_format": "System default",
+  "notification_muted": false,
+  "notification_screenshot": false,
+  "notification_title": "",
+  "notification_urls": [],
+  "page_title": "Events – Queen of the West",
+  "paused": false,
+  "previous_md5": "57f5914e38ce0e060523f9ff639da4d8",
+  "processor": "text_json_diff",
+  "price_change_threshold_percent": null,
+  "proxy": null,
+  "remote_server_reply": "cloudflare",
+  "sort_text_alphabetically": false,
+  "strip_ignored_lines": null,
+  "subtractive_selectors": [],
+  "tag": "",
+  "tags": [],
+  "text_should_not_be_present": [],
+  "time_between_check": {
+    "weeks": 1,
+    "days": null,
+    "hours": null,
+    "minutes": null,
+    "seconds": null
+  },
+  "time_between_check_use_default": true,
+  "time_schedule_limit": {
+    "enabled": true,
+    "monday": {
+      "enabled": true,
+      "start_time": "16:00",
+      "duration": {
+        "hours": "4",
+        "minutes": "0"
+      }
+    },
+    "tuesday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "wednesday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "thursday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "friday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "saturday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "sunday": {
+      "enabled": false,
+      "start_time": "00:00",
+      "duration": {
+        "hours": "24",
+        "minutes": "0"
+      }
+    },
+    "timezone": ""
+  },
+  "title": "Geelong: Queen of the West | e67102a6-b55e-4da1-98ce-3b35c53f4036",
+  "track_ldjson_price_data": null,
+  "trim_text_whitespace": false,
+  "remove_duplicate_lines": false,
+  "trigger_text": [],
+  "url": "https://www.queenofthewestgeelong.com.au/whats-on/",
+  "use_page_title_in_list": null,
+  "uuid": "c37e861d-d6e0-4879-bf20-c9397e4e9e73",
+  "webdriver_delay": 6,
+  "webdriver_js_execute_code": "",
+  "scheduler_timezone_default": null,
+  "save_button": true,
+  "last_filter_config_hash": "358f3a9a15b65299a8601ad1b2ae6f38",
+  "last_check_status": 200,
+  "_llm_result": null,
+  "_llm_intent": "",
+  "_llm_change_summary": ""
+}
