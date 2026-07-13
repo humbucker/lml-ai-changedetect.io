@@ -177,20 +177,20 @@
         "thinking_budget": 0,
         "max_summary_tokens": 3000,
         "budget_action": "skip_llm",
-        "change_summary_default": "Look at what content changed and identify information about any live music or DJ events that have been added.\r\n\r\nYou must respond with ONLY a valid, raw JSON object. Do not include markdown code block formatting (such as ```json ... ```), do not include any preamble, and do not include any extra text.\r\n\r\nUse the following JSON schema:\r\n{\r\n  \"gigs\": [\r\n    {\r\n      \"venue_name\": \"The name of the venue for the gig\"\r\n      \"date\": \"The date of the event (e.g. '2026-07-26' or 'Sun, 26 Jul')\",\r\n      \"time\": \"The start time / door time of the event (e.g. '6:30pm - 9:30pm AEST')\",\r\n      \"acts\": [\"List of acts, bands, or DJs performing\"]\r\n    }\r\n  ]\r\n}\r\n\r\nRules:\r\n1. The \"acts\" key must be a list of strings, even if there is only one act.\r\n2. If multiple gigs are identified, include each gig as an object in the \"gigs\" list.\r\n3. If no live music or DJ events are identified, return:\r\n{\r\n  \"gigs\": []\r\n}\r\n",
+        "change_summary_default": "Identify information about any live music or DJ events that have been ADDED (look for newly added lines in the diff). Ignore events in any content that has been removed or deleted.\r\nYou must respond with ONLY a valid, raw JSON object. Do not include markdown code block formatting (such as ```json ... ```), do not include any preamble, and do not include any extra text.\r\nUse the following JSON schema:\r\n{\r\n  \"gigs\": [\r\n    {\r\n      \"venue\": \"The venue name if explicitly mentioned in the text, otherwise null\",\r\n      \"date\": \"The date formatted as YYYY-MM-DD (e.g. '2026-07-26')\",\r\n      \"time\": \"The start time formatted in 24-hour HH:MM (e.g. '18:30'), otherwise null\",\r\n      \"acts\": [\"List of acts, bands, or DJs performing\"]\r\n    }\r\n  ]\r\n}\r\nRules for formatting:\r\n1. \"date\": Convert all dates to standard YYYY-MM-DD format. If the year is not mentioned on the page, assume the current year (2026). If a gig spans multiple days or has multiple dates, create a separate gig object in the list for each day.\r\n2. \"time\": Convert all times to 24-hour HH:MM format (e.g. \"6:30pm\" -> \"18:30\", \"9pm\" -> \"21:00\"). If a time range is given (e.g., \"6:30pm - 9:30pm\"), extract only the start time (\"18:30\"). If no time can be found, set this to null.\r\n3. \"venue\": Only populate \"venue\" if the text explicitly mentions a specific venue name. If it is a generic listing or doesn't name a venue, set \"venue\" to null.\r\n4. \"acts\": The \"acts\" key must be a list of strings, even if there is only one act.\r\n5. If no live music or DJ events are identified, return:\r\n{\r\n  \"gigs\": []\r\n}\r\n",
         "token_budget_month": 0,
         "max_input_chars": 100000,
         "max_tokens_per_count_period": 0,
         "model": "gemini/gemini-2.5-flash-lite",
-        "api_key": "AIzaSyBxItj-_hBG8RRj7_vApz239g48wqAnwQw",
+        "api_key": "",
         "api_base": "",
         "provider_kind": "gemini",
         "local_token_multiplier": 5,
-        "tokens_total_cumulative": 14647,
-        "tokens_this_month": 14647,
+        "tokens_total_cumulative": 27134,
+        "tokens_this_month": 27134,
         "tokens_month_key": "2026-07",
-        "cost_usd_total_cumulative": 0.0019063,
-        "cost_usd_this_month": 0.0019063
+        "cost_usd_total_cumulative": 0.003398,
+        "cost_usd_this_month": 0.003398
       }
     }
   },
