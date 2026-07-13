@@ -8,7 +8,7 @@ services:
       environment:
         - PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000
       ports:
-        - 5000:5000
+        - 5003:5000
       restart: unless-stopped
       depends_on:
         - playwright-chrome
@@ -33,7 +33,7 @@ services:
       container_name: venue-status-api
       restart: unless-stopped
       ports:
-        - 8082:8080
+        - 5002:8080
       environment:
         - CHANGEDETECTION_API_KEY=6513b3615ff2019a061ecbbcc6fb4b42
       depends_on:
