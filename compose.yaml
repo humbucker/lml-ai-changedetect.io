@@ -34,7 +34,11 @@ services:
       restart: unless-stopped
       ports:
         - 5002:8080
+      volumes:
+        - ./changedetection-data:/datastore:ro
+        - ./venue-status-api:/app
       environment:
         - CHANGEDETECTION_API_KEY=6513b3615ff2019a061ecbbcc6fb4b42
+        - DATASTORE_PATH=/datastore
       depends_on:
         - changedetection

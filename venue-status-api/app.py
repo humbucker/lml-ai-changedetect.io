@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 from datetime import datetime, timezone
 from flask import Flask, jsonify
 
@@ -7,6 +8,7 @@ app = Flask(__name__)
 
 CHANGEDETECTION_URL = os.environ.get("CHANGEDETECTION_URL", "http://changedetection:5000")
 API_KEY = os.environ.get("CHANGEDETECTION_API_KEY", "")
+DATASTORE_PATH = os.environ.get("DATASTORE_PATH", "/datastore")
 SEVEN_DAYS = 7 * 24 * 60 * 60
 
 # Simple in-memory cache for date_created (avoids 250 detail calls on every request)
@@ -27,6 +29,38 @@ def get_date_created(watch_id):
         created = 0
     _date_created_cache[watch_id] = created
     return created
+
+
+def get_llm_change_summary(watch_id, default_venue_name):
+    watch_json_path = os.path.join(DATASTORE_PATH, watch_id, "watch.json")
+    if not os.path.exists(watch_json_path):
+        return None
+    
+    try:
+        with open(watch_json_path, "r", encoding="utf-8") as f:
+            watch_data = json.load(f)
+            
+        summary_text = watch_data.get("_llm_change_summary")
+        if not summary_text:
+            return None
+            
+        # Try to parse as JSON first
+        try:
+            parsed_summary = json.loads(summary_text)
+            if isinstance(parsed_summary, dict) and "gigs" in parsed_summary:
+                # Apply fallback venue name for single-venue watches
+                for gig in parsed_summary["gigs"]:
+                    if not gig.get("venue"):
+                        gig["venue"] = default_venue_name
+                return parsed_summary
+        except json.JSONDecodeError:
+            # Not valid JSON, return raw summary text (markdown/string)
+            pass
+            
+        return summary_text
+    except Exception as e:
+        app.logger.error(f"Error reading LLM summary for watch {watch_id}: {e}")
+        return None
 
 
 def fmt_date(ts):
@@ -97,6 +131,7 @@ def venue_change_status():
             "since": since,
             "last_checked": fmt_date(d["last_checked"]),
             "url": d["url"],
+            "ai_summary": get_llm_change_summary(d["watch_id"], d["name"]),
         })
 
     return jsonify(results)
